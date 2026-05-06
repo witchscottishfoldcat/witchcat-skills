@@ -89,6 +89,10 @@ Load the complementary skill based on the task:
 - `repo-conventions` for naming, file structure, clean code, and output discipline
 - `breakpoint-logging` for targeted runtime logs at breakpoint-like positions
 
+### Delivery Skills (load on demand)
+
+- `create-pr` when the user wants to push and create a Pull Request or Merge Request
+
 ### Tech-Stack Skills (auto-detect and load based on file type or project context)
 
 - `react-conventions` when working with `.tsx`, `.jsx`, React components, or when the project uses React/Next.js
