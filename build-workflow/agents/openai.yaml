@@ -1,0 +1,3 @@
+interface:
+  display_name: "Build Workflow"
+  short_description: "Plan and implement BUILD-mode code changes"

@@ -1,0 +1,3 @@
+interface:
+  display_name: "Witchcat Core"
+  short_description: "Load Witchcat persona, state, and routing rules"

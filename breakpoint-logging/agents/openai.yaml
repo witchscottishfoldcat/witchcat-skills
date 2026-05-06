@@ -1,0 +1,3 @@
+interface:
+  display_name: "Breakpoint Logging"
+  short_description: "Replace breakpoints with targeted logs"

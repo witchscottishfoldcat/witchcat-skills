@@ -1,0 +1,3 @@
+interface:
+  display_name: "Arch Workflow"
+  short_description: "Plan large changes before implementation"

@@ -1,0 +1,3 @@
+interface:
+  display_name: "Engineering Review"
+  short_description: "Review patches for risk, quality, and regressions"
