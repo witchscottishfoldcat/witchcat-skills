@@ -1,56 +1,64 @@
-# Installable Skills
+# Witchcat Skills
 
-witchcat 可安装技能包集合。每个子目录是一个独立的技能（skill），可通过兼容工具加载，为 AI 编程助手提供结构化的工作流、规范和约束。
+Witchcat 可安装 Agent Skills 集合。每个顶层目录都是一个可独立加载的 Skill，`witchcat-core` 负责基础行为和完整路由。
 
-## 技能一览
+## 安装
 
-| 技能 | 用途 | 关键词 |
-|---|---|---|
-| **witchcat-core** | 基础人格、模式状态、任务分级、技术栈路由，所有工作流技能的前置依赖 | 人格、模式、路由 |
-| **arch-workflow** | 架构规划工作流——跨模块拆分、模块边界定义、ADR 决策、宏/微计划 | 架构、ADR、计划 |
-| **build-workflow** | 功能开发工作流——需求澄清、风险分析、微计划、TDD 优先、最终审查 | 构建、TDD、实现 |
-| **debug-workflow** | 根因调试工作流——先复现、再追踪、最小修复、回归覆盖 | 调试、复现、根因 |
-| **engineering-review** | 工程审查与质量门禁——回归风险、可观测性、安全边界、缺失测试 | 审查、质量门禁 |
-| **repo-conventions** | 仓库规范——文件命名、代码风格、输出纪律 | 命名、风格 |
-| **react-conventions** | React + TypeScript 组件规范——类型定义、样式约束、性能模式、可访问性 | React、TSX、组件 |
-| **e2e-testing** | Playwright E2E 测试——选择器策略、等待纪律、网络 Mock、CI 集成 | E2E、Playwright |
-| **breakpoint-logging** | 断点式日志注入——在关键分支/外部调用处添加诊断日志 | 日志、可观测性 |
-| **create-pr** | 创建 PR/MR——自动检测 GitHub / GitLab，推送分支并提交审查 | PR、Git |
+将需要的 Skill 目录复制到 Agent 的 Skills 目录，或使用兼容 Agent Skills 的安装工具加载本仓库。
 
-## 目录结构
+Trae 本地目录示例：
 
-```
-installable-skills/
-├── arch-workflow/        # 架构规划
-│   ├── SKILL.md
-│   ├── agents/openai.yaml
-│   ├── references/       # ADR 模板、风险清单、微计划模板
-│   └── scripts/          # 渲染脚本
-├── breakpoint-logging/   # 断点日志
-├── build-workflow/       # 功能开发
-├── create-pr/            # PR 创建
-├── debug-workflow/       # 根因调试
-├── e2e-testing/          # E2E 测试
-├── engineering-review/   # 工程审查
-├── react-conventions/    # React 规范
-├── repo-conventions/     # 仓库规范
-└── witchcat-core/        # 基础核心
+```text
+C:\Users\Administrator\.trae\skills
 ```
 
-每个技能目录通常包含：
+## 核心与工程工作流
 
-- `SKILL.md` — 技能定义（frontmatter 元数据 + 规范正文）
-- `agents/openai.yaml` — 代理接口配置
-- `references/` — 参考资料（模板、检查清单等，可选）
-- `scripts/` — 渲染/输出脚本（可选）
+- `witchcat-core`：基础行为、模式、任务分级与 Skills 路由
+- `build-workflow`：功能开发与代码修改流程
+- `arch-workflow`：大型或跨模块架构规划
+- `debug-workflow`：普通代码缺陷、测试失败、性能和并发诊断
+- `root-cause-debugging`：部署环境、接口错误、配置和构建产物根因诊断
+- `engineering-review`：工程审查与质量门禁
+- `repo-conventions`：仓库结构、命名和代码规范
+- `breakpoint-logging`：关键路径诊断日志
+- `create-pr`：推送分支并创建 PR/MR
 
-## 技能组合推荐
+## 技术栈、测试与设计
 
-| 场景 | 推荐组合 |
-|---|---|
-| 新功能开发 | witchcat-core → build-workflow + repo-conventions → engineering-review |
-| 大型架构变更 | witchcat-core → arch-workflow → build-workflow → engineering-review |
-| Bug 修复 | witchcat-core → debug-workflow + breakpoint-logging → engineering-review |
-| React 项目开发 | witchcat-core → build-workflow + react-conventions + repo-conventions |
-| E2E 测试编写 | witchcat-core → e2e-testing |
-| 提交代码审查 | create-pr → engineering-review |
+- `react-conventions`：React 与 TypeScript 组件规范
+- `e2e-testing`：Playwright E2E 测试规范
+- `ui-ux-pro-max`：产品 UI、仪表盘、后台和数据密集界面设计
+- `design-taste-frontend`：落地页、营销网站和作品集视觉设计
+- `redesign-existing-projects`：已有网站和应用的视觉审查与升级
+
+## 文档与集成
+
+- `docx`、`pdf`、`pptx`、`xlsx`：文档与办公文件处理
+- `mcp-builder`：MCP Server 与 MCP Tool 构建
+- `notion`：Notion 工作区操作
+- `knowledge-capture`：将讨论和决策整理为 Notion 知识
+- `ssh-essentials-1.0.0`：SSH、隧道和远程文件传输
+- `skill-creator`：Skill 创建、修改和校验
+
+## 量化与市场数据
+
+- `quant-research-audit`：量化研究、因子和回测可信度审查
+- `quant-strategy-validation`：策略报告、源码和样本外验证
+- `tushare`、`tushare-data`：Tushare 市场数据获取与分析
+
+## 路由原则
+
+- 每次只选择一个主要工作流或调试 Skill。
+- 根据任务组合最小数量的技术栈、设计、文件和专业领域 Skill。
+- 已有界面视觉升级由 `redesign-existing-projects` 主导。
+- 数据密集型产品界面优先使用 `ui-ux-pro-max`。
+- 展示型网站和营销页面优先使用 `design-taste-frontend`。
+
+具体路由规则见 [`witchcat-core/SKILL.md`](witchcat-core/SKILL.md)。
+
+## 第三方来源
+
+部分 Skills 基于第三方开源项目，相关许可证随对应目录或 `licenses/` 目录一并保留：
+
+- [`Leonxlnx/taste-skill`](https://github.com/Leonxlnx/taste-skill)：`design-taste-frontend`、`redesign-existing-projects`
